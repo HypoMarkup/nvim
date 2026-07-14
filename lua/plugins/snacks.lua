@@ -14,19 +14,19 @@ return {
           keys = {
             -- swap: require("fzf-lua").files() -> ":lua Snacks.dashboard.pick('files')"
             {
-              icon = " ",
+              icon = vim.fn.nr2char(0xf002, 1) .. " ",
               key = "f",
               desc = "Find File",
               action = function()
                 require("fzf-lua").files()
               end,
             },
-            { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
-            { icon = " ", key = "p", desc = "Projects", action = ":lua Snacks.dashboard.pick('projects')" },
-            { icon = " ", key = "s", desc = "Restore Session", action = ":lua require('persistence').load({ last = true })" },
+            { icon = vim.fn.nr2char(0xf15b, 1) .. " ", key = "n", desc = "New File", action = ":ene | startinsert" },
+            { icon = vim.fn.nr2char(0xf502, 1) .. " ", key = "p", desc = "Projects", action = ":lua Snacks.dashboard.pick('projects')" },
+            { icon = vim.fn.nr2char(0xe348, 1) .. " ", key = "s", desc = "Restore Session", action = ":lua require('persistence').load({ last = true })" },
             -- swap: require("fzf-lua").live_grep() -> ":lua Snacks.dashboard.pick('live_grep')"
             {
-              icon = " ",
+              icon = vim.fn.nr2char(0xf022, 1) .. " ",
               key = "g",
               desc = "Find Text",
               action = function()
@@ -35,7 +35,7 @@ return {
             },
             -- swap: require("fzf-lua").oldfiles() -> ":lua Snacks.dashboard.pick('oldfiles')"
             {
-              icon = " ",
+              icon = vim.fn.nr2char(0xf0c5, 1) .. " ",
               key = "r",
               desc = "Recent Files",
               action = function()
@@ -44,15 +44,15 @@ return {
             },
             -- swap: require("fzf-lua").files({ cwd = ... }) -> ":lua Snacks.dashboard.pick('files', { cwd = vim.fn.stdpath('config') })"
             {
-              icon = " ",
+              icon = vim.fn.nr2char(0xf423, 1) .. " ",
               key = "c",
               desc = "Config",
               action = function()
                 require("fzf-lua").files({ cwd = vim.fn.stdpath("config") })
               end,
             },
-            { icon = "󰒲 ", key = "l", desc = "Lazy", action = ":Lazy" },
-            { icon = " ", key = "q", desc = "Quit", action = ":qa" },
+            { icon = vim.fn.nr2char(0xf04b2, 1) .. " ", key = "l", desc = "Lazy", action = ":Lazy" },
+            { icon = vim.fn.nr2char(0xf426, 1) .. " ", key = "q", desc = "Quit", action = ":qa" },
           },
         },
         sections = {
