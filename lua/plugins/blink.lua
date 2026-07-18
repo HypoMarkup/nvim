@@ -31,6 +31,9 @@ return
     -- See :h blink-cmp-config-keymap for defining your own keymap
     keymap = {
       preset = 'default',
+      ["<CR>"] = { "accept", "fallback" },
+      ["<Tab>"] = { "select_next", "fallback" },
+      ["<S-Tab>"] = { "select_prev", "fallback" },
       ["<C-d>"] = { "show_documentation", "hide_documentation", "fallback" },
       ["<C-b>"] = { "scroll_documentation_up", "fallback" },
       ["<C-f>"] = { "scroll_documentation_down", "fallback" },
@@ -43,7 +46,15 @@ return
     },
 
     -- (Default) Only show the documentation popup when manually triggered
-    completion = { documentation = { auto_show = false } },
+    completion = {
+      list = {
+        selection = { preselect = true, auto_insert = true },
+      },
+      accept = {
+        auto_brackets = { enabled = true },
+      },
+      documentation = { auto_show = false },
+    },
 
     -- Default list of enabled providers defined so that you can extend it
     -- elsewhere in your config, without redefining it, due to `opts_extend`
@@ -60,7 +71,10 @@ return
 
     -- Enable blink.cmp autocompletion in the : command line
     cmdline = {
-      keymap = { preset = 'cmdline' },
+      keymap = {
+        preset = 'cmdline',
+        ['<Space>'] = { 'accept', 'fallback' },
+      },
       completion = { menu = { auto_show = true } },
     },
   },

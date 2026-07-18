@@ -1,3 +1,5 @@
+local banner = require("config.art").turtle2
+
 return {
   {
     "folke/snacks.nvim",
@@ -5,24 +7,26 @@ return {
     priority = 1000,
     opts = {
       dashboard = {
+        -- width = banner.width,
         preset = {
-          header = "",
+          -- header = banner.art,
+
           -- Find File / Find Text / Recent Files / Config use fzf-lua (our chosen picker,
           -- see plugins/fzf.lua). Projects still uses Snacks' own picker (`picker = {}`
           -- below) since fzf-lua has no built-in "projects" source. Each entry below
           -- has a "swap:" comment showing its Snacks.dashboard.pick(...) equivalent.
           keys = {
             -- swap: require("fzf-lua").files() -> ":lua Snacks.dashboard.pick('files')"
+            { icon = vim.fn.nr2char(0xf502, 1) .. " ", key = "p", desc = "Projects", action = ":lua Snacks.dashboard.pick('projects')" },
             {
-              icon = vim.fn.nr2char(0xf002, 1) .. " ",
+              icon = vim.fn.nr2char(0xeede, 1) .. "",
               key = "f",
               desc = "Find File",
               action = function()
                 require("fzf-lua").files()
               end,
             },
-            { icon = vim.fn.nr2char(0xf15b, 1) .. " ", key = "n", desc = "New File", action = ":ene | startinsert" },
-            { icon = vim.fn.nr2char(0xf502, 1) .. " ", key = "p", desc = "Projects", action = ":lua Snacks.dashboard.pick('projects')" },
+            { icon = vim.fn.nr2char(0xf15b, 1) .. " ", key = "n", desc = "New File", action = ":ene | startinsert" }, 
             { icon = vim.fn.nr2char(0xe348, 1) .. " ", key = "s", desc = "Restore Session", action = ":lua require('persistence').load({ last = true })" },
             -- swap: require("fzf-lua").live_grep() -> ":lua Snacks.dashboard.pick('live_grep')"
             {
@@ -56,6 +60,7 @@ return {
           },
         },
         sections = {
+          { section = "header"},
           { section = "keys", gap = 1, padding = 1 },
           { section = "startup" },
         },

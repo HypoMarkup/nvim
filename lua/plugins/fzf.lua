@@ -7,7 +7,6 @@ return {
   ---@module "fzf-lua"
   ---@type fzf-lua.Config|{}
   ---@diagnostic disable: missing-fields
-  opts = {},
   ---@diagnostic enable: missing-fields
   keys = {
     -- swap: require("fzf-lua").files()      -> Snacks.picker.files()

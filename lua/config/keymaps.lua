@@ -38,3 +38,8 @@ end, { desc = "Shrink treesitter selection to child node" })
 -- Alias :W to :w
 vim.api.nvim_create_user_command("W", "w", {})
 
+-- Code actions from lsp for generating stubs
+vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { desc = "Code Actions" })
+
+-- File explorer sidebar
+vim.keymap.set("n", "<leader>e", function() Snacks.explorer() end, { desc = "Toggle Explorer" })

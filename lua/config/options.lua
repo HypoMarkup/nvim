@@ -74,6 +74,6 @@ vim.opt.listchars = {
 vim.opt.foldlevel = 99
 vim.opt.foldlevelstart = 99
 
--- Statusline: native with Grapple tag indicators
-vim.opt.statusline = " %f %m%r%= %{%v:lua.require'grapple'.statusline()%} %l:%c "
-vim.opt.laststatus = 3
+-- Winbar: native with Grapple tag indicators (top of window instead of bottom)
+vim.opt.winbar = " %f %m%r%= %{%v:lua.require'grapple'.statusline()%} %l:%c "
+vim.opt.laststatus = 0
