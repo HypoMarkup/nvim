@@ -7,7 +7,8 @@ return {
       char = {
         -- show jump labels on all matches when using f/F/t/T so you can
         -- press a label to jump directly instead of cycling with ; and ,
-        jump_labels = true,
+        jump_labels = false,
+        enabled = false 
       },
     },
   },

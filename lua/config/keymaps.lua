@@ -43,3 +43,7 @@ vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { desc = "Code Action
 
 -- File explorer sidebar
 vim.keymap.set("n", "<leader>e", function() Snacks.explorer() end, { desc = "Toggle Explorer" })
+
+-- Tab indenting like vscode in visual mode, with reselection of visual block after
+vim.keymap.set("x", "<Tab>",   ">gv", { desc = "Indent and keep selection" })
+vim.keymap.set("x", "<S-Tab>", "<gv", { desc = "Outdent and keep selection" })
