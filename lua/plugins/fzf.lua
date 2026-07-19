@@ -8,6 +8,13 @@ return {
   ---@type fzf-lua.Config|{}
   ---@diagnostic disable: missing-fields
   ---@diagnostic enable: missing-fields
+  opts = {
+      file_ignore_patterns = {
+      "^build/",  "/build/",
+      "^venv/",   "/venv/",
+      "^%.venv/", "/%.venv/",
+    },
+  },
   keys = {
     -- swap: require("fzf-lua").files()      -> Snacks.picker.files()
     { "<leader>ff", function() require("fzf-lua").files() end, desc = "Find Files" },
