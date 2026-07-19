@@ -35,6 +35,9 @@ vim.opt.breakindent = true
 -- Keep 8 lines of context above/below the cursor when scrolling
 vim.opt.scrolloff = 8
 
+-- Highlight the cursor line
+vim.opt.cursorline = true
+
 -- Always show the sign column so text doesn't shift
 vim.opt.signcolumn = "yes"
 
