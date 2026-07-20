@@ -5,6 +5,15 @@ return {
     },
     opts = {
         scope = "cwd",
+        command = function(path)
+            local current = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(0), ":p")
+            local target = vim.fn.fnamemodify(path, ":p")
+            if current == target then
+                vim.notify("Already at " .. vim.fn.fnamemodify(path, ":t"), vim.log.levels.WARN)
+                return
+            end
+            vim.cmd.edit(path)
+        end,
     },
     event = { "BufReadPost", "BufNewFile" },
     cmd = "Grapple",

@@ -9,10 +9,27 @@ return {
   ---@diagnostic disable: missing-fields
   ---@diagnostic enable: missing-fields
   opts = {
-      file_ignore_patterns = {
-      "^build/",  "/build/",
-      "^venv/",   "/venv/",
-      "^%.venv/", "/%.venv/",
+    keymap = {
+      fzf = {
+        ["tab"]       = "down",
+        ["shift-tab"] = "up",
+        ["ctrl-j"]    = "toggle+down",  -- multi-select moved here
+        ["ctrl-k"]    = "toggle+up",
+      },
+    },
+    defaults = {
+      formatter = "path.filename_first",
+      path_shorten = 3,
+    },
+    files = {
+      hidden = false,
+      fd_opts = "--color=never --type f --type l --exclude .git --exclude .jj"
+        .. " --exclude build --exclude venv --exclude .venv",
+    },
+    grep = {
+      hidden = false,
+      rg_opts = "--column --line-number --no-heading --color=always --smart-case"
+        .. " -g '!build/' -g '!venv/' -g '!.venv/' -e",
     },
   },
   keys = {
