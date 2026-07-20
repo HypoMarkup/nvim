@@ -73,9 +73,19 @@ return
     cmdline = {
       keymap = {
         preset = 'cmdline',
-        ['<Space>'] = { 'accept', 'fallback' },
+        ['<CR>']    = { 'accept', 'fallback' },
+        -- ['<CR>'] = { 'select_accept_and_enter', 'fallback' },
+
+        ['<Tab>']   = { 'select_next', 'fallback' },
+        ['<S-Tab>'] = { 'select_prev', 'fallback' },
       },
-      completion = { menu = { auto_show = true } },
+      completion = {
+        menu = { auto_show = true },
+        -- cmdline needs its OWN preselect
+        list = {
+          selection = { preselect = false, auto_insert = false },
+        },
+      },
     },
   },
   opts_extend = { "sources.default" }
