@@ -60,5 +60,14 @@ return {
     vim.keymap.set({ "n", "x", "o" }, "[]", function()
       move.goto_previous_end("@class.outer", "textobjects")
     end, { desc = "Previous class end" })
+
+    -- Repeat textobject moves with ; and , (also keeps f/t/F/T repeatable)
+    local ts_repeat = require("nvim-treesitter-textobjects.repeatable_move")
+    vim.keymap.set({ "n", "x", "o" }, ";", ts_repeat.repeat_last_move_next)
+    vim.keymap.set({ "n", "x", "o" }, ",", ts_repeat.repeat_last_move_previous)
+    vim.keymap.set({ "n", "x", "o" }, "f", ts_repeat.builtin_f_expr, { expr = true })
+    vim.keymap.set({ "n", "x", "o" }, "F", ts_repeat.builtin_F_expr, { expr = true })
+    vim.keymap.set({ "n", "x", "o" }, "t", ts_repeat.builtin_t_expr, { expr = true })
+    vim.keymap.set({ "n", "x", "o" }, "T", ts_repeat.builtin_T_expr, { expr = true })
   end,
 }

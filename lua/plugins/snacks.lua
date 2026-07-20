@@ -6,6 +6,7 @@ return {
     lazy = false,
     priority = 1000,
     opts = {
+      explorer = { enabled = false },
       dashboard = {
         -- width = banner.width,
         preset = {

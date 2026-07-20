@@ -78,5 +78,5 @@ vim.opt.foldlevel = 99
 vim.opt.foldlevelstart = 99
 
 -- Winbar: native with Grapple tag indicators (top of window instead of bottom)
-vim.opt.winbar = " %f %m%r%= %{%v:lua.require'grapple'.statusline()%} %l:%c "
+vim.opt.winbar = " %#WinBarFilename#%t%*  %<%f %m%r%= %#WinBarGrapple#%{%v:lua.require'grapple'.statusline()%}%* %#WinBarLocation#%l:%c%* "
 vim.opt.laststatus = 0

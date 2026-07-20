@@ -101,6 +101,19 @@ vim.api.nvim_create_autocmd("VimEnter", {
   end,
 })
 
+-- Winbar highlight groups (survive colorscheme switches)
+local function set_winbar_highlights()
+  vim.api.nvim_set_hl(0, "WinBarFilename", { link = "Special" })
+  vim.api.nvim_set_hl(0, "WinBarGrapple", { link = "Function" })
+  vim.api.nvim_set_hl(0, "WinBarLocation", { fg = "#7daea3", bold = true })
+end
+set_winbar_highlights()
+vim.api.nvim_create_autocmd("ColorScheme", {
+  desc = "Re-apply winbar highlights on colorscheme change",
+  group = vim.api.nvim_create_augroup("winbar-highlights", { clear = true }),
+  callback = set_winbar_highlights,
+})
+
 -- Force statusline redraw when Grapple tags change (tag/untag/reorder)
 vim.api.nvim_create_autocmd("User", {
   desc = "Redraw statusline on Grapple update",
