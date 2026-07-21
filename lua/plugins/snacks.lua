@@ -121,5 +121,20 @@ return {
         },
       },
     },
+    keys = {
+      {
+        "<leader>t",
+        function()
+          Snacks.terminal.toggle(nil, {
+            win = {
+              position = "bottom",
+              height = 0.3,
+            },
+          })
+        end,
+        desc = "Toggle Terminal",
+        mode = { "n", "t" },
+      },
+    },
   },
 }
