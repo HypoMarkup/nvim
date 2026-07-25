@@ -48,3 +48,13 @@ vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { desc = "Code Action
 -- Tab indenting like vscode in visual mode, with reselection of visual block after
 vim.keymap.set("x", "<Tab>",   ">gv", { desc = "Indent and keep selection" })
 vim.keymap.set("x", "<S-Tab>", "<gv", { desc = "Outdent and keep selection" })
+
+vim.keymap.set("n", "x", '"_x')
+vim.keymap.set("n", "X", '"_X')
+
+vim.keymap.set("n", "c", '"_c')
+vim.keymap.set("n", "C", '"_C')
+vim.keymap.set("n", "cc", '"_cc')
+
+-- Pasting over a visual selection won't change the yank register
+vim.keymap.set("x", "p", '"_dP')
