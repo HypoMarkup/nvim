@@ -19,6 +19,7 @@ return {
       "yamlls", -- YAML
       "jsonls", -- JSON
       "marksman", -- Markdown
+      "rust_analyzer", -- Rust duh
     },
     automatic_enable = true,
   },
