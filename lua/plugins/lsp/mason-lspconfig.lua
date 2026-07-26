@@ -21,6 +21,13 @@ return {
       "marksman", -- Markdown
       "rust_analyzer", -- Rust duh
     },
-    automatic_enable = false,
+    automatic_enable = {
+      "clangd",
+      "basedpyright",
+      "yamlls",
+      "jsonls",
+      "marksman",
+      "rust_analyzer",
+    },
   },
 }
