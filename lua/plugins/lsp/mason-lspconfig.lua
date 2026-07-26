@@ -21,6 +21,6 @@ return {
       "marksman", -- Markdown
       "rust_analyzer", -- Rust duh
     },
-    automatic_enable = true,
+    automatic_enable = false,
   },
 }

@@ -58,3 +58,6 @@ vim.keymap.set("n", "cc", '"_cc')
 
 -- Pasting over a visual selection won't change the yank register
 vim.keymap.set("x", "p", '"_dP')
+
+-- Anti J
+vim.keymap.set('n', '<leader><CR>', 'i<CR><Esc>', { desc = 'Split line at cursor, opposite of J' })
