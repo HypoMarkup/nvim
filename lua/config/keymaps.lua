@@ -61,3 +61,11 @@ vim.keymap.set("x", "p", '"_dP')
 
 -- Anti J
 vim.keymap.set('n', '<leader><CR>', 'i<CR><Esc>', { desc = 'Split line at cursor, opposite of J' })
+
+-- Search & replace across the file, with confirmation.
+vim.keymap.set("n", "<leader>s", ":%s//gc<Left><Left><Left>",
+  { desc = "Search & replace (file, confirm)" })
+
+-- Same thing but scoped to the visual selection.
+vim.keymap.set("x", "<leader>s", ":s//gc<Left><Left><Left>",
+  { desc = "Search & replace (selection, confirm)" })
