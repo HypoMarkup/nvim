@@ -44,7 +44,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     map("n", "gI", fzf.lsp_implementations, "Goto Implementation")
     map("n", "gy", fzf.lsp_typedefs, "Goto Type Definition")
     map("n", "K", vim.lsp.buf.hover, "Hover Documentation")
-    map("n", "gK", vim.lsp.buf.signature_help, "Signature Help")
+    map("n", "gK", vim.lsp.buf.signature_help, "Function Signature Help (just K is hover btw)")
     map("n", "<leader>rn", vim.lsp.buf.rename, "Rename Symbol")
     map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, "Code Action")
     map("n", "<leader>ds", fzf.lsp_document_symbols, "Document Symbols")

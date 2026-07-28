@@ -66,6 +66,14 @@ vim.keymap.set('n', '<leader><CR>', 'i<CR><Esc>', { desc = 'Split line at cursor
 vim.keymap.set("n", "<leader>s", ":%s//gc<Left><Left><Left>",
   { desc = "Search & replace (file, confirm)" })
 
--- Same thing but scoped to the visual selection.
-vim.keymap.set("x", "<leader>s", ":s//gc<Left><Left><Left>",
-  { desc = "Search & replace (selection, confirm)" })
+vim.keymap.set({ "n", "x", "o" }, "L", "g_", { desc = "Last non-blank" })
+vim.keymap.set({ "n", "x", "o" }, "H", "^", { desc = "First non-blank" })
+
+-- Easy substitiute bind, g = global, c = confim, I = case must match
+vim.keymap.set("n", "<leader>s",
+  [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gcI<Left><Left><Left><Left>]],
+  { desc = "Substitute word under cursor" })
+
+-- Show diagnostics if they go off the screen
+vim.keymap.set("n", "<leader>D", "<cmd>lua vim.diagnostic.open_float()<CR>", { desc = "Show line diagnostics" })
+vim.keymap.set("n", "gD", "<cmd>lua vim.diagnostic.open_float()<CR>" { desc = "Show line diagnostics (or leader D)" })
