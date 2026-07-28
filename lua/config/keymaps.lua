@@ -72,4 +72,4 @@ vim.keymap.set("n", "<leader>s",
 
 -- Show diagnostics if they go off the screen
 vim.keymap.set("n", "<leader>D", "<cmd>lua vim.diagnostic.open_float()<CR>", { desc = "Show line diagnostics" })
-vim.keymap.set("n", "gD", "<cmd>lua vim.diagnostic.open_float()<CR>" { desc = "Show line diagnostics (or leader D)" })
+vim.keymap.set("n", "gD", "<cmd>lua vim.diagnostic.open_float()<CR>", { desc = "Show line diagnostics (or leader D)" })
