@@ -48,7 +48,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     map("n", "<leader>rn", vim.lsp.buf.rename, "Rename Symbol")
     map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, "Code Action")
     map("n", "<leader>ds", fzf.lsp_document_symbols, "Document Symbols")
-    map("n", "<leader>ws", fzf.lsp_workspace_symbols, "Workspace Symbols")
+    map("n", "gS", fzf.lsp_workspace_symbols, "Workspace Symbols")
     map("n", "]d", function()
       vim.diagnostic.jump({ count = 1, float = true })
     end, "Next Diagnostic")
