@@ -73,3 +73,12 @@ vim.keymap.set("n", "<leader>s",
 -- Show diagnostics if they go off the screen
 vim.keymap.set("n", "<leader>D", "<cmd>lua vim.diagnostic.open_float()<CR>", { desc = "Show line diagnostics" })
 vim.keymap.set("n", "gD", "<cmd>lua vim.diagnostic.open_float()<CR>", { desc = "Show line diagnostics (or leader D)" })
+
+-- to remove the ctrl f from the plugin so vscode find works add this to the settings json:
+-- "vscode-neovim.ctrlKeysForNormalMode": [
+--     "a", "b", "d", "e", "h", "i", "j", "k", "l", "m", "o", "r", "t", "u", "v", "w", "x", "y", "z", "/", "]"
+-- ]
+if vim.g.vscode then
+   vim.keymap.set("n", "<C-f>", function() require('vscode').action('actions.find') end)
+   vim.keymap.set("n", "/", "<Nop>")
+end

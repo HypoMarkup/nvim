@@ -3,6 +3,7 @@ local banner = require("config.art").turtle2
 return {
   {
     "folke/snacks.nvim",
+    cond = not vim.g.vscode,
     lazy = false,
     priority = 1000,
     opts = {

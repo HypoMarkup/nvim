@@ -7,6 +7,7 @@
 -- after/lsp/<server>.lua at the config root, not here. See :h lsp-config.
 return {
   "mason-org/mason-lspconfig.nvim",
+  cond = not vim.g.vscode,
   dependencies = {
     "mason-org/mason.nvim",
     "neovim/nvim-lspconfig",

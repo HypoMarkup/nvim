@@ -4,5 +4,6 @@
 -- require() hook load it the first time `require("schemastore")` is called.
 return {
   "b0o/schemastore.nvim",
+  cond = not vim.g.vscode,
   lazy = true,
 }

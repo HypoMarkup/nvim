@@ -1,5 +1,6 @@
 return {
   "lewis6991/gitsigns.nvim",
+  cond = not vim.g.vscode,
   event = { "BufReadPre", "BufNewFile" },
   opts = {
     -- Gutter glyphs, written out explicitly (these match gitsigns' own defaults)

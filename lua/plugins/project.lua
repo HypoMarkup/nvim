@@ -5,6 +5,7 @@
 -- format is compatible if you ever want to enable detection later).
 return {
   "ahmedkhalf/project.nvim",
+  cond = not vim.g.vscode,
   lazy = false,
   config = function()
     require("project_nvim").setup({

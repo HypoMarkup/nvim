@@ -1,5 +1,6 @@
 return {
   "karb94/neoscroll.nvim",
+  cond = not vim.g.vscode,
   event = "VeryLazy", 
   opts = {
     mappings = { "<C-u>", "<C-d>", "<C-b>", "<C-f>", "<C-y>", "<C-e>"},
