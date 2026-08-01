@@ -20,6 +20,13 @@ vim.keymap.set("n", "<leader>q", function()
   Snacks.dashboard.open()
 end, { desc = "Open Dashboard" })
 
+-- Window management: <leader>w as <C-w> alias, plus direct <C-h/j/k/l> navigation
+vim.keymap.set("n", "<leader>w", "<C-w>", { desc = "Window prefix (alias for C-w)" })
+vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Move to left window" })
+vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Move to down window" })
+vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Move to up window" })
+vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Move to right window" })
+
 -- Treesitter incremental selection (built into Neovim core via vim.treesitter._select,
 -- replaces the old nvim-treesitter `incremental_selection` module removed on the `main` branch)
 vim.keymap.set("n", "<CR>", function()
@@ -76,7 +83,7 @@ vim.keymap.set("n", "gD", "<cmd>lua vim.diagnostic.open_float()<CR>", { desc = "
 
 -- to remove the ctrl f from the plugin so vscode find works add this to the settings json:
 -- "vscode-neovim.ctrlKeysForNormalMode": [
---     "a", "b", "d", "e", "h", "i", "j", "k", "l", "m", "o", "r", "t", "u", "v", "w", "x", "y", "z", "/", "]"
+--     "a", "b", "d", "e", "h", "i", "j", "l", "m", "o", "r", "t", "u", "v", "w", "x", "y", "z", "/", "]"
 -- ]
 if vim.g.vscode then
    vim.keymap.set("n", "<C-f>", function() require('vscode').action('actions.find') end)
