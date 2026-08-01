@@ -63,11 +63,22 @@ return {
 
     -- Repeat textobject moves with ; and , (also keeps f/t/F/T repeatable)
     local ts_repeat = require("nvim-treesitter-textobjects.repeatable_move")
-    vim.keymap.set({ "n", "x", "o" }, ";", ts_repeat.repeat_last_move_next)
-    vim.keymap.set({ "n", "x", "o" }, ",", ts_repeat.repeat_last_move_previous)
+    vim.keymap.set({ "n", "x", "o" }, ";", ts_repeat.repeat_last_move)
+    vim.keymap.set({ "n", "x", "o" }, ",", ts_repeat.repeat_last_move_opposite)
     vim.keymap.set({ "n", "x", "o" }, "f", ts_repeat.builtin_f_expr, { expr = true })
     vim.keymap.set({ "n", "x", "o" }, "F", ts_repeat.builtin_F_expr, { expr = true })
     vim.keymap.set({ "n", "x", "o" }, "t", ts_repeat.builtin_t_expr, { expr = true })
     vim.keymap.set({ "n", "x", "o" }, "T", ts_repeat.builtin_T_expr, { expr = true })
+
+    -- Repeat } / { with ; and ,
+    local para_move = ts_repeat.make_repeatable_move(function(opts)
+      if opts.forward then
+        vim.cmd.normal({ vim.v.count1 .. "}", bang = true })
+      else
+        vim.cmd.normal({ vim.v.count1 .. "{", bang = true })
+      end
+    end)
+    vim.keymap.set({ "n", "x", "o" }, "}", function() para_move({ forward = true }) end, { desc = "Next paragraph" })
+    vim.keymap.set({ "n", "x", "o" }, "{", function() para_move({ forward = false }) end, { desc = "Previous paragraph" })
   end,
 }
