@@ -108,3 +108,5 @@ vim.keymap.set("n", "<leader>y", function()
   vim.cmd('keepjumps normal! ggVG"+y')
   vim.fn.winrestview(view)
 end, { desc = "Yank whole file" })
+
+vim.keymap.set('n', '<leader>=', '`[=`]', { desc = 'Reindent last paste/change' })
