@@ -89,3 +89,22 @@ if vim.g.vscode then
    vim.keymap.set("n", "<C-f>", function() require('vscode').action('actions.find') end)
    vim.keymap.set("n", "/", "<Nop>")
 end
+
+-- restart lsp bind
+vim.keymap.set("n", "<leader>rl", "<cmd>lsp restart<CR>", { desc = "Restart LSP" })
+
+-- additional git toggles to go in the leader g t folder
+vim.keymap.set("n", "<leader>gtd", function() require("gitsigns").toggle_deleted() end, { desc = "Toggle Deleted" })
+vim.keymap.set("n", "<leader>gtw", function() require("gitsigns").toggle_word_diff() end, { desc = "Toggle Word Diff" })
+
+-- save file
+if not vim.g.vscode then
+  vim.keymap.set({ "n", "i", "v" }, "<C-s>", "<cmd>write<CR><Esc>", { desc = "Save file" })
+end
+
+-- yank whole file, magic to not mess with the cursor
+vim.keymap.set("n", "<leader>y", function()
+  local view = vim.fn.winsaveview()
+  vim.cmd('keepjumps normal! ggVG"+y')
+  vim.fn.winrestview(view)
+end, { desc = "Yank whole file" })
