@@ -16,6 +16,15 @@ vim.keymap.set("n", "<leader>u", function()
   require("undotree").open({ command = "topleft 30vnew" })
 end, { desc = "Toggle Undo Tree" })
 
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "nvim-undotree",
+  callback = function(ev)
+    vim.keymap.set("n", "<Esc>", "<cmd>close<CR>", { buffer = ev.buf, desc = "Quit Undo Tree" })
+    vim.keymap.set("n", "q", "<cmd>close<CR>", { buffer = ev.buf, desc = "Quit Undo Tree" })
+    vim.keymap.set("n", "<CR>", "<cmd>close<CR>", { buffer = ev.buf, desc = "Confirm and close Undo Tree" })
+  end,
+})
+
 return {}
 
 -- alternative to original undo tree
