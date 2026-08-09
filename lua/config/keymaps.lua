@@ -118,8 +118,8 @@ vim.keymap.set("n", "<leader>J", "<cmd>m .+1<CR>==V", { desc = "Move line down a
 vim.keymap.set("n", "<leader>K", "<cmd>m .-2<CR>==V", { desc = "Move line up and select" })
 
 -- Visual mode: move selection, reindent, reselect
-vim.keymap.set("v", "j", ":m '>+1<CR>gv=gv", { desc = "Move selection down" })
-vim.keymap.set("v", "k", ":m '<-2<CR>gv=gv", { desc = "Move selection up" })
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selection down" })
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selection up" })
 
 -- Make current file executable
 vim.keymap.set("n", "<leader>cx", "<cmd>!chmod +x %<CR>", { desc = "Make file executable" })
@@ -141,3 +141,7 @@ vim.keymap.set(
   '<cmd>let @+ = expand("%:p")<CR><cmd>lua print("Copied path to: " .. vim.fn.expand("%:p"))<CR>',
   { desc = "Copy current file name and path", silent = false }
 )
+
+vim.keymap.set("n", "<leader>p", "o<Esc>o<Esc>]p", { desc = "Paste external block below" })
+
+vim.keymap.set("n", "<leader>P", "O<Esc>O<Esc>[p", { desc = "Paste external block above" })
