@@ -111,6 +111,8 @@ end, { desc = "Yank whole file" })
 
 vim.keymap.set('n', '<leader>=', '`[=`]', { desc = 'Reindent last paste/change' })
 
+vim.keymap.set('n', 'gp', '`[v`]', { desc = 'Select last paste' })
+
 -- Normal mode: move line, reindent, select
 vim.keymap.set("n", "<leader>J", "<cmd>m .+1<CR>==V", { desc = "Move line down and select" })
 vim.keymap.set("n", "<leader>K", "<cmd>m .-2<CR>==V", { desc = "Move line up and select" })
