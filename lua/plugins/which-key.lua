@@ -8,6 +8,8 @@ opts = {
       { "<leader>gh", group = "Hunk" },
       { "<leader>gt", group = "Git Toggle" },
       { "<leader>r",  group = "Refactor/Restart LSP" },
+      { "<leader>c",  group = "Code" },
+      { "<leader>f",  group = "Find" },
     },
   },  
   keys = {

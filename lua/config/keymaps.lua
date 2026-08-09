@@ -110,3 +110,32 @@ vim.keymap.set("n", "<leader>y", function()
 end, { desc = "Yank whole file" })
 
 vim.keymap.set('n', '<leader>=', '`[=`]', { desc = 'Reindent last paste/change' })
+
+-- Normal mode: move line, reindent, select
+vim.keymap.set("n", "<leader>J", "<cmd>m .+1<CR>==V", { desc = "Move line down and select" })
+vim.keymap.set("n", "<leader>K", "<cmd>m .-2<CR>==V", { desc = "Move line up and select" })
+
+-- Visual mode: move selection, reindent, reselect
+vim.keymap.set("v", "j", ":m '>+1<CR>gv=gv", { desc = "Move selection down" })
+vim.keymap.set("v", "k", ":m '<-2<CR>gv=gv", { desc = "Move selection up" })
+
+-- Make current file executable
+vim.keymap.set("n", "<leader>cx", "<cmd>!chmod +x %<CR>", { desc = "Make file executable" })
+
+-- Open project root (cwd) in VS Code
+vim.keymap.set("n", "<leader>c.", function()
+  vim.cmd("silent !code " .. vim.fn.fnameescape(vim.uv.cwd()))
+end, { desc = "Open project root in VS Code" })
+
+-- Open Neovim config in VS Code
+vim.keymap.set("n", "<leader>cc", function()
+  vim.cmd("silent !code " .. vim.fn.fnameescape(vim.fn.stdpath("config")))
+end, { desc = "Open Neovim config in VS Code" })
+
+-- Copy current file name and full path to clipboard
+vim.keymap.set(
+  "n",
+  "<leader>cpf",
+  '<cmd>let @+ = expand("%:p")<CR><cmd>lua print("Copied path to: " .. vim.fn.expand("%:p"))<CR>',
+  { desc = "Copy current file name and path", silent = false }
+)
