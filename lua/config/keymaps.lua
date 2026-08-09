@@ -142,6 +142,10 @@ vim.keymap.set(
   { desc = "Copy current file name and path", silent = false }
 )
 
+-- Paste blocks copied from outside nvim below or above with a break blockwise rather than on curor pos
 vim.keymap.set("n", "<leader>p", "o<Esc>o<Esc>]p", { desc = "Paste external block below" })
-
 vim.keymap.set("n", "<leader>P", "O<Esc>O<Esc>[p", { desc = "Paste external block above" })
+
+-- Insert blank lines like ] space but move with
+vim.keymap.set("n", "<leader>o", "o<esc>", { desc = "Blank line below and move down" })
+vim.keymap.set("n", "<leader>O", "O<esc>", { desc = "Blank line above and move up" })
