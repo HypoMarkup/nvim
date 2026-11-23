@@ -65,10 +65,11 @@ vim.opt.confirm = true
 -- Show whitespace: tabs, trailing spaces, and invisible/nbsp chars that
 -- silently break things (non-breaking space, zero-width space)
 vim.opt.list = true
-vim.opt.listchars:append({
-  nbsp = "␣",
+vim.opt.listchars = {
   tab = "  ",
-})
+  nbsp = "␣",
+}
+
 -- Folding: start with everything open (folds are computed but not collapsed)
 vim.opt.foldlevel = 99
 vim.opt.foldlevelstart = 99
