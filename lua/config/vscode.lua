@@ -25,6 +25,29 @@ vim.keymap.set("n", "<C-j>", "<C-w>j", { remap = true, desc = "Move to down wind
 vim.keymap.set("n", "<C-k>", "<C-w>k", { remap = true, desc = "Move to up window" })
 vim.keymap.set("n", "<C-l>", "<C-w>l", { remap = true, desc = "Move to right window" })
 
+-- Native keys, pointed at the VSCode equivalents
+local vscode = require("vscode")
+for lhs, cmd in pairs({
+  ["<leader>ff"] = "workbench.action.quickOpen",
+  ["<leader>fg"] = "workbench.action.findInFiles",
+  ["<leader>fb"] = "workbench.action.showAllEditors",
+  ["<leader>fr"] = "workbench.action.openRecent",
+  ["<leader>e"] = "workbench.view.explorer",
+  ["-"] = "workbench.files.action.showActiveFileInExplorer", -- oil's key, reveals the file instead
+  ["<leader>t"] = "workbench.action.terminal.toggleTerminal",
+  ["<leader>rn"] = "editor.action.rename",
+  ["<leader>ds"] = "workbench.action.gotoSymbol",
+  ["]d"] = "editor.action.marker.next",
+  ["[d"] = "editor.action.marker.prev",
+  ["]h"] = "workbench.action.editor.nextChange",
+  ["[h"] = "workbench.action.editor.previousChange",
+}) do
+  vim.keymap.set("n", lhs, function() vscode.action(cmd) end)
+end
+vim.keymap.set("n", "<leader>fw", function()
+  vscode.action("workbench.action.findInFiles", { args = { query = vim.fn.expand("<cword>") } })
+end)
+
 -- lazy reads the same plugin specs as normal nvim, but only these load. The
 -- rest stay installed and in the lockfile, they just never load or map keys.
 local plugins = {
