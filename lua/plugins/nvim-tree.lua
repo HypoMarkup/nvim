@@ -1,7 +1,6 @@
 -- snacks file tree doesnt support flattening dirs
 return {
   "nvim-tree/nvim-tree.lua",
-  cond = not vim.g.vscode,
   -- closes tree on any buffer quit, pcall makes silent error
   init = function()
     vim.api.nvim_create_autocmd("QuitPre", {

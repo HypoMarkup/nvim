@@ -25,6 +25,13 @@ vim.diagnostic.config({
 -- by `vim.o.winborder` in config/options.lua (0.11+), not per-handler here
 -- (the old `vim.lsp.with(handler, {border=...})` wrapper is deprecated).
 
+-- Show diagnostics if they go off the screen
+vim.keymap.set("n", "<leader>D", "<cmd>lua vim.diagnostic.open_float()<CR>", { desc = "Show line diagnostics" })
+vim.keymap.set("n", "gD", "<cmd>lua vim.diagnostic.open_float()<CR>", { desc = "Show line diagnostics (or leader D)" })
+
+-- restart lsp bind
+vim.keymap.set("n", "<leader>rl", "<cmd>lsp restart<CR>", { desc = "Restart LSP" })
+
 -- Buffer-local keymaps, wired up once per buffer an LSP client attaches to
 vim.api.nvim_create_autocmd("LspAttach", {
   desc = "Configure buffer-local LSP keymaps",

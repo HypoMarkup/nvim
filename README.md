@@ -28,3 +28,18 @@ Make capslock esc (and shift capslock lock caps) by adding this to bashrc
 Install a nerd font
 
 Gnome terminal freaks out with spacing when u change font without closing ALL terminals and opening a fresh one
+
+Add to VSCode's settings.json:
+```json
+// leaves out c, f and k (and the arrow/backspace/delete combos) so VSCode keeps those shortcuts
+"vscode-neovim.ctrlKeysForNormalMode": [
+    "a", "b", "d", "e", "h", "i", "j", "l", "m", "o", "r", "t", "u", "v", "w", "x", "y", "z", "/", "]"
+],
+// only if VSCode can't find nvim on its own
+"vscode-neovim.neovimExecutablePaths.linux": "/path/to/nvim"
+
+// optional: runs vscode-neovim in its own thread so other extensions can't slow it down
+"extensions.experimental.affinity": {
+    "asvetliakov.vscode-neovim": 1
+},
+```

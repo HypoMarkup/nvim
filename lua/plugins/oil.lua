@@ -1,6 +1,5 @@
 return {
   'stevearc/oil.nvim',
-  cond = not vim.g.vscode,
   ---@module 'oil'
   ---@type oil.SetupOpts
   opts = {

@@ -10,22 +10,32 @@
 -- }
 
 -- built in and has live preview
+-- It ships inside Neovim, so `dir` points lazy at that copy: nothing gets
+-- installed, lazy loads it on first use (and it stays out of VSCode)
 
-vim.cmd("packadd nvim.undotree")
-vim.keymap.set("n", "<leader>u", function()
-  require("undotree").open({ command = "topleft 30vnew" })
-end, { desc = "Toggle Undo Tree" })
-
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "nvim-undotree",
-  callback = function(ev)
-    vim.keymap.set("n", "<Esc>", "<cmd>close<CR>", { buffer = ev.buf, desc = "Quit Undo Tree" })
-    vim.keymap.set("n", "q", "<cmd>close<CR>", { buffer = ev.buf, desc = "Quit Undo Tree" })
-    vim.keymap.set("n", "<CR>", "<cmd>close<CR>", { buffer = ev.buf, desc = "Confirm and close Undo Tree" })
+return {
+  dir = vim.env.VIMRUNTIME .. "/pack/dist/opt/nvim.undotree",
+  cmd = "Undotree",
+  keys = {
+    {
+      "<leader>u",
+      function()
+        require("undotree").open({ command = "topleft 30vnew" })
+      end,
+      desc = "Toggle Undo Tree",
+    },
+  },
+  config = function()
+    vim.api.nvim_create_autocmd("FileType", {
+      pattern = "nvim-undotree",
+      callback = function(ev)
+        vim.keymap.set("n", "<Esc>", "<cmd>close<CR>", { buffer = ev.buf, desc = "Quit Undo Tree" })
+        vim.keymap.set("n", "q", "<cmd>close<CR>", { buffer = ev.buf, desc = "Quit Undo Tree" })
+        vim.keymap.set("n", "<CR>", "<cmd>close<CR>", { buffer = ev.buf, desc = "Confirm and close Undo Tree" })
+      end,
+    })
   end,
-})
-
-return {}
+}
 
 -- alternative to original undo tree
 

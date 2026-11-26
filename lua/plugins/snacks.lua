@@ -3,7 +3,6 @@ local banner = require("config.art").turtle2
 return {
   {
     "folke/snacks.nvim",
-    cond = not vim.g.vscode,
     lazy = false,
     priority = 1000,
     opts = {
@@ -123,6 +122,22 @@ return {
       },
     },
     keys = {
+      -- Open the dashboard (warn if current buffer has unsaved changes)
+      {
+        "<leader>q",
+        function()
+          if vim.bo.modified then
+            local choice = vim.fn.confirm("Save changes before opening dashboard?", "&Yes\n&No\n&Cancel", 1)
+            if choice == 1 then
+              vim.cmd("write")
+            elseif choice == 0 or choice == 3 then
+              return -- cancelled, stay in the current buffer
+            end
+          end
+          Snacks.dashboard.open()
+        end,
+        desc = "Open Dashboard",
+      },
       {
         "<leader>t",
         function()

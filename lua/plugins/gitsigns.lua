@@ -1,7 +1,11 @@
 return {
   "lewis6991/gitsigns.nvim",
-  cond = not vim.g.vscode,
   event = { "BufReadPre", "BufNewFile" },
+  keys = {
+    -- additional git toggles to go in the leader g t folder
+    { "<leader>gtd", function() require("gitsigns").toggle_deleted() end, desc = "Toggle Deleted" },
+    { "<leader>gtw", function() require("gitsigns").toggle_word_diff() end, desc = "Toggle Word Diff" },
+  },
   opts = {
     -- Gutter glyphs, written out explicitly (these match gitsigns' own defaults)
     signs = {

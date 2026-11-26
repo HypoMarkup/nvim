@@ -4,7 +4,6 @@ return
   -- blink.cmp v2 requires blink.lib as an explicit dependency
   -- optional: provides snippets for the snippet source
   dependencies = { 'saghen/blink.lib', 'rafamadriz/friendly-snippets' },
-  cond = not vim.g.vscode,
 
   -- use a release tag to download pre-built binaries
   -- version = '2.*',

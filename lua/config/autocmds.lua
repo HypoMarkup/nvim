@@ -67,40 +67,6 @@ vim.api.nvim_create_autocmd('CursorMoved', {
 })
 
 
--- Any directory entered with neovim is registered manually as a project
-vim.api.nvim_create_autocmd("VimEnter", {
-  desc = "Register cwd in project history",
-  group = vim.api.nvim_create_augroup("register-project", { clear = true }),
-  callback = function()
-    local cwd = vim.uv.cwd()
-    if not cwd then return end
-    local data_dir = vim.fn.stdpath("data") .. "/project_nvim"
-    local history_file = data_dir .. "/project_history"
-    vim.fn.mkdir(data_dir, "p")
-    local lines = {}
-    local f = io.open(history_file, "r")
-    if f then
-      for line in f:lines() do
-        if line ~= "" then
-          table.insert(lines, line)
-        end
-      end
-      f:close()
-    end
-    for _, l in ipairs(lines) do
-      if l == cwd then return end
-    end
-    table.insert(lines, 1, cwd)
-    f = io.open(history_file, "w")
-    if f then
-      for _, l in ipairs(lines) do
-        f:write(l .. "\n")
-      end
-      f:close()
-    end
-  end,
-})
-
 -- Winbar highlight groups (survive colorscheme switches)
 local function set_winbar_highlights()
   vim.api.nvim_set_hl(0, "WinBarFilename", { link = "Special" })

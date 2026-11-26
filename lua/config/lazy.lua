@@ -30,5 +30,3 @@ require("lazy").setup({
   checker = { enabled = false, notify = false },
   change_detection = { notify = false },
 })
-
-require("config.keymaps")
