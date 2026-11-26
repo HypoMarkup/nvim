@@ -60,6 +60,11 @@ return {
     vim.keymap.set({ "n", "x", "o" }, "[]", function()
       move.goto_previous_end("@class.outer", "textobjects")
     end, { desc = "Previous class end" })
+    
+    -- Swap: move the argument under the cursor left/right (like <leader>J/K for lines)
+    local swap = require("nvim-treesitter-textobjects.swap")
+    vim.keymap.set("n", "<leader>L", function() swap.swap_next("@parameter.inner") end, { desc = "Move argument right" })
+    vim.keymap.set("n", "<leader>H", function() swap.swap_previous("@parameter.inner") end, { desc = "Move argument left" })
 
     -- Repeat textobject moves with ; and , (also keeps f/t/F/T repeatable)
     local ts_repeat = require("nvim-treesitter-textobjects.repeatable_move")
