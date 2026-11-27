@@ -41,6 +41,11 @@ for lhs, cmd in pairs({
   ["[d"] = "editor.action.marker.prev",
   ["]h"] = "workbench.action.editor.nextChange",
   ["[h"] = "workbench.action.editor.previousChange",
+  ["za"] = "editor.toggleFold",
+  ["zc"] = "editor.fold",
+  ["zo"] = "editor.unfold",
+  ["zM"] = "editor.foldAll",
+  ["zR"] = "editor.unfoldAll",
 }) do
   vim.keymap.set("n", lhs, function() vscode.action(cmd) end)
 end
