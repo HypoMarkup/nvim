@@ -10,6 +10,7 @@ require("config.options")
 require("config.keymaps")
 require("config.autocmds")
 
+vim.opt.timeoutlen = 600 -- Neovim's default; 300 only works natively because which-key holds the sequence
 vim.opt.winbar = "" -- it shows grapple tags, and grapple doesn't load here
 
 -- Ctrl+F opens VSCode's find. To let VSCode handle Ctrl+F directly instead,
@@ -37,6 +38,7 @@ for lhs, cmd in pairs({
   ["<leader>t"] = "workbench.action.terminal.toggleTerminal",
   ["<leader>rn"] = "editor.action.rename",
   ["<leader>ds"] = "workbench.action.gotoSymbol",
+
   ["]d"] = "editor.action.marker.next",
   ["[d"] = "editor.action.marker.prev",
   ["]h"] = "workbench.action.editor.nextChange",
@@ -46,6 +48,14 @@ for lhs, cmd in pairs({
   ["zo"] = "editor.unfold",
   ["zM"] = "editor.foldAll",
   ["zR"] = "editor.unfoldAll",
+  ["gr"] = "editor.action.referenceSearch.trigger",
+
+  ["gI"] = "editor.action.goToImplementation",
+  ["gy"] = "editor.action.goToTypeDefinition",
+  ["gK"] = "editor.action.triggerParameterHints",
+  ["gS"] = "workbench.action.showAllSymbols",
+  ["<leader>ca"] = "editor.action.quickFix",
+  ["<leader>D"] = "editor.action.showHover", -- shows the error under the cursor
 }) do
   vim.keymap.set("n", lhs, function() vscode.action(cmd) end)
 end
